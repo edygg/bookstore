@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="libs/flipster/css/jquery.flipster.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -28,9 +29,25 @@
 			</ul>
 		</div>
 	</nav>
+
+	<main>
+		<section class="flipster">
+			<ul>
+				<li><img src="img/a-orillas-del-rio-piedra.jpg" alt="A Orillas del Rio Piedra"></li>
+				<li><img src="img/aleph.jpg" alt="Aleph"></li>
+			</ul>
+		</section>
+
+		<section>
+		</section>
+	</main>
 	<!-- JQuery -->
 	<script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	<!-- Flipster -->
+	<script src="libs/flipster/js/jquery.flipster.min.js"></script>
+	<!-- Script -->
+	<script src="js/bookstore.js"></script>
 </body>
 </html>
