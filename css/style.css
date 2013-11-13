@@ -1,0 +1,50 @@
+/* Fuentes */
+@font-face {
+	font-family: 'Cinzel';
+	src: url(../fonts/Cinzel-Regular.ttf);
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Cinzel';
+	src: url(../fonts/Cinzel-Bold.ttf);
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Cinzel';
+	src: url(../fonts/Cinzel-Black.ttf);
+	font-style: normal;
+	font-weight: 900;
+}
+
+body {
+	font-size: 16px;
+}
+
+.nav, .navbar-default {
+	background: url(../img/wood-texture.jpg) repeat;
+}
+
+.navbar-brand {
+	color: white !important;
+	font-family: 'Cinzel';
+	font-weight: bold;
+	text-shadow: 2px 2px 5px black;
+}
+
+#main-navbar li > a {
+	color: white !important;
+	font-family: 'Cinzel';
+	font-size: 1em; /* 25px/16px */
+	font-weight: bold;
+	text-shadow: 2px 2px 5px black;	
+
+	transition: all 0.5s;
+}
+
+#main-navbar li > a:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+}
