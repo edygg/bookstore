@@ -1,4 +1,4 @@
-/* Fuentes */
+/*-------------------------------- Fuentes --------------------------------*/
 @font-face {
 	font-family: 'Cinzel';
 	src: url(../fonts/Cinzel-Regular.ttf);
@@ -19,11 +19,21 @@
 	font-style: normal;
 	font-weight: 900;
 }
+/****************************************************************************/
 
+
+/*---------------------------------- Tags ----------------------------------*/
 body {
 	font-size: 16px;
 }
 
+img {
+
+}
+/****************************************************************************/
+
+
+/*--------------------------------- Clases ---------------------------------*/
 .nav, .navbar-default {
 	background: url(../img/wood-texture.jpg) repeat;
 }
@@ -35,6 +45,20 @@ body {
 	text-shadow: 2px 2px 5px black;
 }
 
+.flipster {
+	width: 50%;
+	min-height: 320px;
+	float: left;
+}
+
+.submenu-options {
+	display: none;
+	background: linear-gradient(to bottom, #feffe8 0%,#d6dbbf 100%);
+}
+/****************************************************************************/
+
+
+/*---------------------------------- IDs ----------------------------------*/
 #main-navbar li > a {
 	color: white !important;
 	font-family: 'Cinzel';
@@ -48,3 +72,20 @@ body {
 #main-navbar li > a:hover {
 	background-color: rgba(255, 255, 255, 0.5);
 }
+
+#manage-options {
+	float: right;
+	width: 40%
+}
+
+#manage-options ul {
+	list-style: none;
+	padding: 0;
+}
+
+#manage-options > ul > li {
+	background: linear-gradient(to bottom, #ff3019 0%,#cf0404 100%);
+	margin: 2%;
+	padding: 2%
+}
+/****************************************************************************/

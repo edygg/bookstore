@@ -6,7 +6,11 @@
 	<meta charset="utf-8">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<!-- Flipster CSS -->
 	<link rel="stylesheet" href="libs/flipster/css/jquery.flipster.min.css">
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<!-- Main CSS -->
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -37,17 +41,38 @@
 				<li><img src="img/aleph.jpg" alt="Aleph"></li>
 			</ul>
 		</section>
-
-		<section>
+		
+		<section id="manage-options">
+			<ul class="menu-options">
+				<li class="menu-option"><i class="fa fa-bookmark"></i> | Autores
+					<ul class="submenu-options">
+						<li>Agregar autor</li>
+						<li>Administrar autores</li>
+					</ul>
+				</li>
+				<li class="menu-option"><i class="fa fa-bookmark"></i> | Editoriales
+					<ul class="submenu-options">
+						<li>Agregar Editorial</li>
+						<li>Administrar Editoriales</li>
+					</ul>
+				</li>
+				<li class="menu-option"><i class="fa fa-bookmark"></i> | Libros
+					<ul class="submenu-options">
+						<li>Agregar Libro</li>
+						<li>Administrar Libros</li>
+					</ul>
+				</li>
+			</ul>			
 		</section>
 	</main>
+
 	<!-- JQuery -->
 	<script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	<!-- Flipster -->
 	<script src="libs/flipster/js/jquery.flipster.min.js"></script>
-	<!-- Script -->
+	<!-- Main Script -->
 	<script src="js/bookstore.js"></script>
 </body>
 </html>
