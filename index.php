@@ -50,8 +50,8 @@
 					</div>
 					<div class="submenu-options">
 						<ul>
-							<li><i class="fa fa-book"></i> Agregar autor</li>
-							<li><i class="fa fa-book"></i> Administrar autores</li>
+							<li><i class="fa fa-book"></i> <a href="">Agregar autor</a></li>
+							<li><i class="fa fa-book"></i> <a href="">Administrar autores</a></li>
 						</ul>
 					</div>
 				</li>
@@ -62,8 +62,8 @@
 					</div>
 					<div class="submenu-options">
 						<ul>
-							<li><i class="fa fa-book"></i> Agregar Editorial</li>
-							<li><i class="fa fa-book"></i> Administrar Editoriales</li>
+							<li><i class="fa fa-book"></i> <a href="">Agregar Editorial</a></li>
+							<li><i class="fa fa-book"></i> <a href="">Administrar Editoriales</a></li>
 						</ul>
 					</div>
 				</li>
@@ -74,8 +74,8 @@
 					</div>
 					<div class="submenu-options">
 						<ul>
-							<li><i class="fa fa-book"></i> Agregar Libro</li>
-							<li><i class="fa fa-book"></i> Administrar Libros</li>
+							<li><i class="fa fa-book"></i> <a href="">Agregar Libro</a></li>
+							<li><i class="fa fa-book"></i> <a href="">Administrar Libros</a></li>
 						</ul>
 					</div>
 				</li>				
