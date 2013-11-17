@@ -35,52 +35,7 @@
 	</nav>
 
 	<main>
-		<section class="flipster">
-			<ul>
-				<li><img src="img/a-orillas-del-rio-piedra.jpg" alt="A Orillas del Rio Piedra"></li>
-				<li><img src="img/aleph.jpg" alt="Aleph"></li>
-			</ul>
-		</section>
 		
-		<section id="manage-options">
-			<ul class="menu-options">
-				<li class="menu-option">
-					<div class="menu-option-header">
-						<i class="fa fa-bookmark"></i> | Autores
-					</div>
-					<div class="submenu-options">
-						<ul>
-							<li><i class="fa fa-book"></i> <a href="AddAuthors.php">Agregar autor</a></li>
-							<li><i class="fa fa-book"></i> <a href="">Administrar autores</a></li>
-						</ul>
-					</div>
-				</li>
-
-				<li class="menu-option">
-					<div class="menu-option-header">
-						<i class="fa fa-bookmark"></i> | Editoriales
-					</div>
-					<div class="submenu-options">
-						<ul>
-							<li><i class="fa fa-book"></i> <a href="AddEditorials.php">Agregar Editorial</a></li>
-							<li><i class="fa fa-book"></i> <a href="">Administrar Editoriales</a></li>
-						</ul>
-					</div>
-				</li>
-
-				<li class="menu-option">
-					<div class="menu-option-header">
-						<i class="fa fa-bookmark"></i> | Libros
-					</div>
-					<div class="submenu-options">
-						<ul>
-							<li><i class="fa fa-book"></i> <a href="AddBooks.php">Agregar Libro</a></li>
-							<li><i class="fa fa-book"></i> <a href="">Administrar Libros</a></li>
-						</ul>
-					</div>
-				</li>				
-			</ul>			
-		</section>
 	</main>
 
 	<!-- JQuery -->
