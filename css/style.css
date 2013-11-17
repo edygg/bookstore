@@ -28,7 +28,8 @@ body {
 }
 
 img {
-
+	height: 100%;
+	width: auto;
 }
 /****************************************************************************/
 
@@ -51,9 +52,27 @@ img {
 	float: left;
 }
 
+.menu-option {
+	margin: 2%;
+}
+
+.menu-option-header {
+	background: linear-gradient(to bottom, #ff3019 0%,#cf0404 100%);
+	padding: 2%;
+}
+
 .submenu-options {
 	display: none;
 	background: linear-gradient(to bottom, #feffe8 0%,#d6dbbf 100%);
+	padding: 2% 2%;
+}
+
+.submenu-options li {
+	transition: all 0.5s;
+}
+
+.submenu-options li:hover {
+	font-weight: bold;
 }
 /****************************************************************************/
 
@@ -83,9 +102,39 @@ img {
 	padding: 0;
 }
 
-#manage-options > ul > li {
-	background: linear-gradient(to bottom, #ff3019 0%,#cf0404 100%);
-	margin: 2%;
-	padding: 2%
+/****************************************************************************/
+
+
+/*----------------------------- Media Queries -----------------------------*/
+
+@media screen and (max-width: 1000px) {
+	body {
+		font-size: 18px;
+	}
+
+	.flipster {
+		float: none;
+		width: 100%;
+	}
+
+	#manage-options {
+		float: none;
+		width: 100%;
+	}
 }
+
+@media screen and (max-width: 550px) {
+	.flipster {
+		min-height: 85%;
+		padding: 2%
+	}
+
+	img	{
+		height: 55%;
+		width: 100%;
+	}
+}
+
+
+
 /****************************************************************************/

@@ -44,24 +44,41 @@
 		
 		<section id="manage-options">
 			<ul class="menu-options">
-				<li class="menu-option"><i class="fa fa-bookmark"></i> | Autores
-					<ul class="submenu-options">
-						<li>Agregar autor</li>
-						<li>Administrar autores</li>
-					</ul>
+				<li class="menu-option">
+					<div class="menu-option-header">
+						<i class="fa fa-bookmark"></i> | Autores
+					</div>
+					<div class="submenu-options">
+						<ul>
+							<li><i class="fa fa-book"></i> Agregar autor</li>
+							<li><i class="fa fa-book"></i> Administrar autores</li>
+						</ul>
+					</div>
 				</li>
-				<li class="menu-option"><i class="fa fa-bookmark"></i> | Editoriales
-					<ul class="submenu-options">
-						<li>Agregar Editorial</li>
-						<li>Administrar Editoriales</li>
-					</ul>
+
+				<li class="menu-option">
+					<div class="menu-option-header">
+						<i class="fa fa-bookmark"></i> | Editoriales
+					</div>
+					<div class="submenu-options">
+						<ul>
+							<li><i class="fa fa-book"></i> Agregar Editorial</li>
+							<li><i class="fa fa-book"></i> Administrar Editoriales</li>
+						</ul>
+					</div>
 				</li>
-				<li class="menu-option"><i class="fa fa-bookmark"></i> | Libros
-					<ul class="submenu-options">
-						<li>Agregar Libro</li>
-						<li>Administrar Libros</li>
-					</ul>
-				</li>
+
+				<li class="menu-option">
+					<div class="menu-option-header">
+						<i class="fa fa-bookmark"></i> | Libros
+					</div>
+					<div class="submenu-options">
+						<ul>
+							<li><i class="fa fa-book"></i> Agregar Libro</li>
+							<li><i class="fa fa-book"></i> Administrar Libros</li>
+						</ul>
+					</div>
+				</li>				
 			</ul>			
 		</section>
 	</main>
