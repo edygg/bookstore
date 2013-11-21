@@ -14,6 +14,19 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	<?php 
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$link = new mysqli("localhost", "root", "computacion1.", "bookstore");
+
+			if (mysqli_connect_errno()) {
+				echo "<p>falló</p>";
+			}
+			$query = 'INSERT INTO editorial (name_editorial, address) VALUES ("'.$_POST['editorial_name'].'","'.$_POST['editorial_address'].'");';
+			$result = $link->query($query);
+			$link->close();
+		}
+	?>
+
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
@@ -34,8 +47,44 @@
 		</div>
 	</nav>
 
-	<main>
-		
+	<main class="col-sm-8 col-sm-offset-2">
+		<?php
+			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+				if ($result) {
+					echo '<div class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <strong>Éxito!</strong> la editorial ha sido añadido. 
+					      </div>';
+				} else {
+					echo '<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <strong>Error</strong> ha ocurrido un problema. 
+					      </div>';
+				}
+			}
+		?>
+
+		<form class="form-horizontal" method="post">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Nombre</label>
+				<div class="col-sm-10">
+					<input type="text alpha-space-only" class="form-control alpha-space-only" id="input-name" name="editorial_name" placeholder="Planeta" required>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Dirección</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" name="editorial_address" placeholder="Mexico, D. F."></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-primary">Guardar</button>
+			    </div>
+		  	</div>
+		</form>
 	</main>
 
 	<!-- JQuery -->

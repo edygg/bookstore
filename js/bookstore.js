@@ -18,8 +18,12 @@ $(document).ready(function() {
 	});
 
 	$('.isbn-chek').bind('keyup',function(){ 
-	    $(this).val( $(this).val().replace(/\d{12}(?:\d|X)/,'') ); 
+	     
 	});
+
+	$('.year-chek').bind('keyup',function(){ 
+		$(this).val( $(this).val().match(/[1-9]{1,4}/) ); 
+	});	
 
 	window.setTimeout(function() {
 		$('.alert-dismissable').fadeTo('slow', 0.5, function(){

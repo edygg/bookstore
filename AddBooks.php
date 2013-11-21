@@ -62,7 +62,7 @@
 				if ($result) {
 					echo '<div class="alert alert-success alert-dismissable">
 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							  <strong>Éxito!</strong> el autor ha sido añadido. 
+							  <strong>Éxito!</strong> el libro ha sido añadido. 
 					      </div>';
 				} else {
 					echo '<div class="alert alert-danger alert-dismissable">
@@ -84,14 +84,14 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control alpha-space-only" id="input-name" name="book_name" placeholder="Aleph" required>
+					<input type="text" class="form-control" id="input-name" name="book_name" placeholder="Aleph" required>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Año</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="input-year" name="book_year" placeholder="1998" required>
+					<input type="number" class="form-control year-chek" id="input-year" name="book_year" placeholder="1998" required>
 				</div>
 			</div>
 

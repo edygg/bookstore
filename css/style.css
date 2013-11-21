@@ -36,6 +36,15 @@ a, a:hover {
 	text-decoration: none;
 	color: black;
 }
+
+button {
+	margin: 1%;
+}
+
+button > a {
+	color: white;
+}
+
 /****************************************************************************/
 
 
