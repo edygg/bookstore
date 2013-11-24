@@ -16,17 +16,19 @@
 <body>
 
 	<?php
-		$link = new mysqli("localhost", "root", "computacion1.", "bookstore");
+		include 'DbConnector.php';
 
-		if (mysqli_connect_errno()) {
+		$db = new DbConnector();
+
+		if ($db->error()) {
 			echo "<p>falló</p>";
 		}
 
-		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+		if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['id']) {
 			//Eliminar
 			$deleted = false;
-			$result1 = $link->query("DELETE FROM book WHERE id_book = ".$_GET['id']);
-			$result2 = $link->query("DELETE FROM bookauthors WHERE id_book = ".$_GET['id']);
+			$result1 = $db->link->query("DELETE FROM book WHERE id_book = ".$_GET['id']);
+			$result2 = $db->link->query("DELETE FROM bookauthors WHERE id_book = ".$_GET['id']);
 			if ($result1 && $result2) {
 				$deleted = true;
 			}
@@ -54,46 +56,33 @@
 	</nav>
 
 	<main class="col-sm-8 col-sm-offset-2">
-		<section class="table-responsive">
-			<?php
-				if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-					if ($deleted) {
-						echo '<div class="alert alert-success alert-dismissable">
-								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-								  <strong>Éxito!</strong> el libro ha sido eliminado. 
-						      </div>';
-					} else {
-						echo '<div class="alert alert-danger alert-dismissable">
-								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-								  <strong>Error</strong> ha ocurrido un problema. 
-						      </div>';
-					}
-				}
-			?>
+		<section>
+			<?php if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['id']): ?>
+				<?php if ($deleted): ?>
+					<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					 	<strong>Éxito!</strong> el libro ha sido eliminado. 
+			      	</div>
+				<?php else: ?>
+					<div class="alert alert-danger alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<strong>Error</strong> ha ocurrido un problema. 
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>	
 
-			<table class="table table-hover">
-				<thead>
-					<th>ISBN</th>
-					<th>Nombre</th>
-					<th>Acciones</th>
-				</thead>
-				<tbody>
-				<?php 
-					$result = $link->query("SELECT id_book, isbn, namebook FROM book ORDER BY namebook;");
-					while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-						echo '<tr>';
-						echo '<td>'.$row['isbn'].'</td>';
-						echo '<td>'.$row['namebook'].'</td>';
-						echo '<td>
-							  <button type="button" class="btn btn-primary btn-sm"><a href="UpdateBooks.php?id='.$row['id_book'].'">Actualizar</a></button>
-							  <button type="button" class="btn btn-danger btn-sm"><a href="ManageBooks.php?id='.$row['id_book'].'">Eliminar</a></button>
-							  </td>';
-						echo '</tr>';
-					}
-					$link->close();
-				?>
-				</tbody>
-			</table>
+			<?php $result = $db->link->query("SELECT id_book, namebook 
+											  FROM book ORDER BY namebook;"); ?>
+
+			<?php while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
+				<article class="book" data-idbook=<?php echo '"'.$row['id_book'].'"'; ?> >
+					<header>
+						<?php echo $row['namebook']; ?>
+					</header>
+					<div class="book-details">
+					</div>
+				</article> 
+			<?php endwhile; ?>
 		</section>
 	</main>
 

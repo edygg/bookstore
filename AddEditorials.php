@@ -15,15 +15,17 @@
 </head>
 <body>
 	<?php 
+		include 'DbConnector.php';
+		
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$link = new mysqli("localhost", "root", "computacion1.", "bookstore");
+			$db = new DbConnector();
 
-			if (mysqli_connect_errno()) {
+			if ($db->error()) {
 				echo "<p>falló</p>";
 			}
+
 			$query = 'INSERT INTO editorial (name_editorial, address) VALUES ("'.$_POST['editorial_name'].'","'.$_POST['editorial_address'].'");';
-			$result = $link->query($query);
-			$link->close();
+			$result = $db->link->query($query);
 		}
 	?>
 
@@ -48,21 +50,19 @@
 	</nav>
 
 	<main class="col-sm-8 col-sm-offset-2">
-		<?php
-			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				if ($result) {
-					echo '<div class="alert alert-success alert-dismissable">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							  <strong>Éxito!</strong> la editorial ha sido añadido. 
-					      </div>';
-				} else {
-					echo '<div class="alert alert-danger alert-dismissable">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							  <strong>Error</strong> ha ocurrido un problema. 
-					      </div>';
-				}
-			}
-		?>
+		<?php if ($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
+			<?php if ($result): ?>
+				<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				  	<strong>Éxito!</strong> el autor ha sido añadido. 
+		      </div>
+			<?php else: ?>
+				<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				  	<strong>Error</strong> ha ocurrido un problema. 
+		      	</div>
+			<?php endif; ?>
+		<?php endif; ?>
 
 		<form class="form-horizontal" method="post">
 			<div class="form-group">

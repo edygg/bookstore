@@ -75,7 +75,7 @@
 					<div class="submenu-options">
 						<ul>
 							<li><i class="fa fa-book"></i> <a href="AddBooks.php">Agregar Libro</a></li>
-							<li><i class="fa fa-book"></i> <a href="">Administrar Libros</a></li>
+							<li><i class="fa fa-book"></i> <a href="ManageBooks.php">Administrar Libros</a></li>
 						</ul>
 					</div>
 				</li>				
