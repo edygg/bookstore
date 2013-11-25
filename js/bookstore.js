@@ -26,15 +26,7 @@ $(document).ready(function() {
 	});
 
 	$('.book').on('click', 'header', function() {
-		$.ajax({
-			url: 'BookInformation.php',
-			cache: false,
-			data: { 'idbook': $(this).closest('.book').data('idbook') }
-		})
-		  .done( function(html) {
-		  	console.log(html);
-		  	$(this).closest('.book').find('.book-details').html(html);
-		  });
+		$(this).closest('.book').find('.book-details').slideToggle();
 	});	
 
 	window.setTimeout(function() {

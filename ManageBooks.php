@@ -70,16 +70,41 @@
 					</div>
 				<?php endif; ?>
 			<?php endif; ?>	
+							
+			<?php $result = $db->link->query("SELECT B.id_book, B.namebook, B.isbn, B.year, E.name_editorial ".
+											"FROM book B JOIN editorial E ON B.id_editorial = E.id_editorial;"); 
+			?>
 
-			<?php $result = $db->link->query("SELECT id_book, namebook 
-											  FROM book ORDER BY namebook;"); ?>
-
+			<?php $previous_index = 0; ?>
 			<?php while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
 				<article class="book" data-idbook=<?php echo '"'.$row['id_book'].'"'; ?> >
 					<header>
 						<?php echo $row['namebook']; ?>
 					</header>
 					<div class="book-details">
+						<ul>
+							<li><strong>ISBN: </strong> <?php echo $row['isbn']; ?></li>
+							<li><strong>Año: </strong> <?php echo $row['year']; ?></li>
+							<li><strong>Editorial: </strong> <?php echo $row['name_editorial']; ?></li>
+							<li><strong>Autor(es): </strong> 
+								<?php $result = $db->link->query("SELECT A.name_author 
+																  FROM author A JOIN bookauthors BA ON A.id_author = BA.id_author 
+																  WHERE BA.id_book = ".$row['id_book'].";"); ?>
+
+								<?php 
+									$row = $result->fetch_array(MYSQLI_ASSOC);
+									do {
+										echo $row['name_author'];
+
+										if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+											echo ", ";
+										} else {
+											break;
+										}
+									} while (true); 
+								?>
+							</li>
+						</ul>
 					</div>
 				</article> 
 			<?php endwhile; ?>
