@@ -66,19 +66,23 @@ button > a {
 	float: left;
 }
 
-.menu-option {
+.menu-option, .book {
 	margin: 2%;
 }
 
-.menu-option-header {
+.menu-option-header, .book > header {
 	background: linear-gradient(to bottom, #ff3019 0%,#cf0404 100%);
 	padding: 2%;
+	box-shadow: 3px 3px 2px black;
+	z-index: 0; 
 }
 
-.submenu-options {
+.submenu-options, .book-details {
 	display: none;
 	background: linear-gradient(to bottom, #feffe8 0%,#d6dbbf 100%);
 	padding: 2% 2%;
+	box-shadow: 3px 3px 2px black;
+	z-index: 1;
 }
 
 .submenu-options li {
@@ -91,6 +95,20 @@ button > a {
 
 .book-details {
 	display: none;
+}
+
+.book, .book > header {
+	border-radius: 150px;
+}
+
+.book > header {
+	font-size: 1.25em;
+	text-align: center;
+	color: white;
+}
+
+.manage-book-options {
+	text-align: center;
 }
 
 /****************************************************************************/

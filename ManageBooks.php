@@ -79,9 +79,15 @@
 			<?php while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
 				<article class="book" data-idbook=<?php echo '"'.$row['id_book'].'"'; ?> >
 					<header>
-						<?php echo $row['namebook']; ?>
+						<div>
+							<?php echo $row['namebook']; ?>
+						</div>
 					</header>
 					<div class="book-details">
+						<div class="manage-book-options">
+							<button type="button" class="btn btn-primary"><a href="#">Actualizar</a></button>
+							<button type="button" class="btn btn-danger"><a href="#">Eliminar</a></button>
+						</div>
 						<ul>
 							<li><strong>ISBN: </strong> <?php echo $row['isbn']; ?></li>
 							<li><strong>Año: </strong> <?php echo $row['year']; ?></li>
