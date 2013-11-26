@@ -15,23 +15,25 @@
 </head>
 <body>
 	<?php
-		$link = new mysqli("localhost", "root", "computacion1.", "bookstore");
+		include 'DbConnector.php';
 
-		if (mysqli_connect_errno()) {
+		$db = new DbConnector();
+
+		if ($db->error()) {
 			echo "<p>falló</p>";
 		}
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$query = 'INSERT INTO book (isbn, namebook, year, id_editorial) 
 					  VALUES ("'.$_POST['book_isbn'].'","'.$_POST['book_name'].'",'.$_POST['book_year'].','.$_POST['book_editorial'].');';
-			$result = $link->query($query);
+			$result = $db->link->query($query);
 		}
 
 		if ($result) {
 			$id_book = $link->insert_id;
 			foreach ($_POST['book_authors'] as $author) {
 				$query = 'INSERT INTO bookauthors VALUES ('.$id_book.','.$author.');';
-				$link->query($query);
+				$db->link->query($query);
 			}
 		}
 	?>
@@ -57,41 +59,48 @@
 	</nav>
 
 	<main class="col-sm-8 col-sm-offset-2">
-		<?php
-			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				if ($result) {
-					echo '<div class="alert alert-success alert-dismissable">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							  <strong>Éxito!</strong> el libro ha sido añadido. 
-					      </div>';
-				} else {
-					echo '<div class="alert alert-danger alert-dismissable">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							  <strong>Error</strong> ha ocurrido un problema. 
-					      </div>';
-				}
-			}
-		?>
+		<?php if ($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
+			<?php if ($result): ?>
+				<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				  	<strong>Éxito!</strong> el libro ha sido añadido. 
+		      </div>
+			<?php else: ?>
+				<div class="alert alert-danger alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				  	<strong>Error</strong> ha ocurrido un problema. 
+		      	</div>
+			<?php endif; ?>
+		<?php endif; ?>
 
 		<form class="form-horizontal" method="post">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">ISBN</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control isbn-chek" id="input-isbn" name="book_isbn" placeholder="9783161484100" required>
+					<input type="text" class="form-control" 
+						   id="input-isbn" name="book_isbn" 
+						   placeholder="9783161484100" required
+						   data-validation="custom" data-validation-regexp="^(\d{12}(?:\d|X))">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="input-name" name="book_name" placeholder="Aleph" required>
+					<input type="text" class="form-control" 
+						   id="input-name" name="book_name" 
+						   placeholder="Aleph" required
+						   data-validation="custom" data-validation-regexp="^([a-zA-zñÑáéíóúÁÉÍÓÚ ]+)">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Año</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control year-chek" id="input-year" name="book_year" placeholder="1998" required>
+					<input type="number" class="form-control year-chek" 
+						   id="input-year" name="book_year" placeholder="1998" 
+						   required data-validation="date"
+						   data-validation-format="yyyy">
 				</div>
 			</div>
 
@@ -100,7 +109,7 @@
 				<div class="col-sm-10">
 					<select class="form-control" name="book_editorial">
 					<?php
-						$result = $link->query("SELECT id_editorial, name_editorial FROM editorial");
+						$result = $db->link->query("SELECT id_editorial, name_editorial FROM editorial");
 						while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 							echo '<option value="'.$row['id_editorial'].'">'.$row['name_editorial']."</option>";
 						}
@@ -114,11 +123,10 @@
 				<div class="col-sm-10">
 					<select class="form-control" name="book_authors[]" multiple>
 					<?php
-						$result = $link->query("SELECT id_author, name_author FROM author");
+						$result = $db->link->query("SELECT id_author, name_author FROM author");
 						while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 							echo '<option value="'.$row['id_author'].'">'.$row['name_author']."</option>";
 						}
-						$link->close();
 					?>
 					</select>
 				</div>
@@ -138,6 +146,8 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	<!-- Flipster -->
 	<script src="libs/flipster/js/jquery.flipster.min.js"></script>
+	<!-- Form Validator -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.27/jquery.form-validator.min.js"></script>
 	<!-- Main Script -->
 	<script src="js/bookstore.js"></script>
 </body>

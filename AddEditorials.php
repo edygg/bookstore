@@ -54,7 +54,7 @@
 			<?php if ($result): ?>
 				<div class="alert alert-success alert-dismissable">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				  	<strong>Éxito!</strong> el autor ha sido añadido. 
+				  	<strong>Éxito!</strong> la editorial ha sido añadida. 
 		      </div>
 			<?php else: ?>
 				<div class="alert alert-danger alert-dismissable">
@@ -68,14 +68,20 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
-					<input type="text alpha-space-only" class="form-control alpha-space-only" id="input-name" name="editorial_name" placeholder="Planeta" required>
+					<input type="text alpha-space-only" class="form-control" 
+						   id="input-name" name="editorial_name" 
+						   placeholder="Planeta" required
+						   data-validation="custom" data-validation-regexp="^([a-zA-zñÑáéíóúÁÉÍÓÚ ]+)$">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Dirección</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" name="editorial_address" placeholder="Mexico, D. F."></textarea>
+					<textarea class="form-control" name="editorial_address" 
+							  placeholder="Mexico, D. F." data-validation="alphanumeric"
+							  data-validation-allow="()-.,">
+					</textarea>
 				</div>
 			</div>
 
@@ -93,6 +99,8 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	<!-- Flipster -->
 	<script src="libs/flipster/js/jquery.flipster.min.js"></script>
+	<!-- Form Validator -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.27/jquery.form-validator.min.js"></script>
 	<!-- Main Script -->
 	<script src="js/bookstore.js"></script>
 </body>

@@ -26,10 +26,10 @@
 
 		if ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['id']) {
 			//Eliminar
+			$result = $db->link->query("DELETE FROM editorial WHERE id_editorial=".$_GET['id'].";");
 			$deleted = false;
-			$result1 = $db->link->query("DELETE FROM book WHERE id_book = ".$_GET['id']);
-			$result2 = $db->link->query("DELETE FROM bookauthors WHERE id_book = ".$_GET['id']);
-			if ($result1 && $result2) {
+
+			if ($result) {
 				$deleted = true;
 			}
 		}
@@ -61,7 +61,7 @@
 				<?php if ($deleted): ?>
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					 	<strong>Éxito!</strong> el libro ha sido eliminado. 
+					 	<strong>Éxito!</strong> la editorial ha sido eliminada. 
 			      	</div>
 				<?php else: ?>
 					<div class="alert alert-danger alert-dismissable">
@@ -70,53 +70,34 @@
 					</div>
 				<?php endif; ?>
 			<?php endif; ?>	
-							
-			<?php $result = $db->link->query("SELECT B.id_book, B.namebook, B.isbn, B.year, E.name_editorial ".
-											"FROM book B JOIN editorial E ON B.id_editorial = E.id_editorial;"); 
-			?>
+			
+			<!-- Recoger información -->				
+			<?php $result = $db->link->query("SELECT * FROM editorial;"); ?>
+
 			<?php if ($result->num_rows == 0): ?>
 				<div class="alert alert-warning">
-					<p><strong>No hay libros que mostrar.</strong></p>
+					<p><strong>No hay editoriales que mostrar.</strong></p>
 				</div>
 			<?php else: ?>
-				<?php while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
-					<article class="book" data-idbook=<?php echo '"'.$row['id_book'].'"'; ?> >
-						<header>
-							<div>
-								<?php echo $row['namebook']; ?>
-							</div>
-						</header>
-						<div class="book-details">
-							<div class="manage-book-options">
-								<button type="button" class="btn btn-primary"><a href="#">Actualizar</a></button>
-								<button type="button" class="btn btn-danger"><a href=<?php echo '"ManageBooks.php?id='.$row['id_book'].'"'; ?>>Eliminar</a></button>
-							</div>
-							<ul>
-								<li><strong>ISBN: </strong> <?php echo $row['isbn']; ?></li>
-								<li><strong>Año: </strong> <?php echo $row['year']; ?></li>
-								<li><strong>Editorial: </strong> <?php echo $row['name_editorial']; ?></li>
-								<li><strong>Autor(es): </strong> 
-									<?php $result = $db->link->query("SELECT A.name_author 
-																	  FROM author A JOIN bookauthors BA ON A.id_author = BA.id_author 
-																	  WHERE BA.id_book = ".$row['id_book'].";"); ?>
-
-									<?php 
-										$row = $result->fetch_array(MYSQLI_ASSOC);
-										do {
-											echo $row['name_author'];
-
-											if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-												echo ", ";
-											} else {
-												break;
-											}
-										} while (true); 
-									?>
-								</li>
-							</ul>
-						</div>
-					</article> 
-				<?php endwhile; ?>
+				<table class="table table-hover">
+					<thead>
+						<th>Nombre</th>
+						<th>Dirección</th>
+						<th>Acciones</th>
+					</thead>
+					<tbody>
+						<?php while ($row = $result->fetch_array(MYSQLI_ASSOC)): ?>
+							 <tr>
+							 	<td><?php echo $row['name_editorial']; ?></td>
+							 	<td><?php echo $row['adress']; ?></td>
+							 	<td>
+							 		<button class="btn btn-primary"><a href="">Actualizar</a></button>
+							 		<button class="btn btn-danger"><a href=<?php echo '"ManageEditorials.php?id='.$row['id_editorial'].'"'; ?>>Eliminar</a></button>
+							 	</td>
+							 </tr>
+						<?php endwhile; ?>
+					</tbody>
+				</table>
 			<?php endif; ?>
 		</section>
 	</main>

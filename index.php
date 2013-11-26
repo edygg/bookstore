@@ -51,7 +51,7 @@
 					<div class="submenu-options">
 						<ul>
 							<li><i class="fa fa-book"></i> <a href="AddAuthors.php">Agregar autor</a></li>
-							<li><i class="fa fa-book"></i> <a href="">Administrar autores</a></li>
+							<li><i class="fa fa-book"></i> <a href="ManageAuthors.php">Administrar autores</a></li>
 						</ul>
 					</div>
 				</li>
@@ -63,7 +63,7 @@
 					<div class="submenu-options">
 						<ul>
 							<li><i class="fa fa-book"></i> <a href="AddEditorials.php">Agregar Editorial</a></li>
-							<li><i class="fa fa-book"></i> <a href="">Administrar Editoriales</a></li>
+							<li><i class="fa fa-book"></i> <a href="ManageEditorials.php">Administrar Editoriales</a></li>
 						</ul>
 					</div>
 				</li>
@@ -89,6 +89,8 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	<!-- Flipster -->
 	<script src="libs/flipster/js/jquery.flipster.min.js"></script>
+	<!-- Form Validator -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.27/jquery.form-validator.min.js"></script>
 	<!-- Main Script -->
 	<script src="js/bookstore.js"></script>
 </body>

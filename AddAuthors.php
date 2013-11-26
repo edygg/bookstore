@@ -70,14 +70,20 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Nombre</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control alpha-space-only" id="input-name" name="author_name" placeholder="Paulo Coelho" required>
+					<input type="text" class="form-control" 
+						   id="input-name" name="author_name" 
+						   placeholder="Paulo Coelho" required
+						   data-validation="custom" data-validation-regexp="^([a-zA-zñÑáéíóúÁÉÍÓÚ ]+)$">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Nacionalidad</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control alpha-only" id="input-nationality" name="author_nationality" placeholder="Brasileño" required>
+					<input type="text" class="form-control" 
+						   id="input-nationality" name="author_nationality" 
+						   placeholder="Brasileño" required
+						   data-validation="custom" data-validation-regexp="^([a-zA-zñÑáéíóúÁÉÍÓÚ]+)$">
 				</div>
 			</div>
 
@@ -95,6 +101,8 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	<!-- Flipster -->
 	<script src="libs/flipster/js/jquery.flipster.min.js"></script>
+	<!-- Form Validator -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.27/jquery.form-validator.min.js"></script>
 	<!-- Main Script -->
 	<script src="js/bookstore.js"></script>
 </body>
