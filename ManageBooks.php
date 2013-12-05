@@ -70,7 +70,7 @@
 					</div>
 				<?php endif; ?>
 			<?php endif; ?>	
-							
+ 							
 			<?php $result = $db->link->query("SELECT B.id_book, B.namebook, B.isbn, B.year, E.name_editorial ".
 											"FROM book B JOIN editorial E ON B.id_editorial = E.id_editorial;"); 
 			?>
@@ -96,16 +96,16 @@
 								<li><strong>Año: </strong> <?php echo $row['year']; ?></li>
 								<li><strong>Editorial: </strong> <?php echo $row['name_editorial']; ?></li>
 								<li><strong>Autor(es): </strong> 
-									<?php $result = $db->link->query("SELECT A.name_author 
+									<?php $result2 = $db->link->query("SELECT A.name_author 
 																	  FROM author A JOIN bookauthors BA ON A.id_author = BA.id_author 
 																	  WHERE BA.id_book = ".$row['id_book'].";"); ?>
 
 									<?php 
-										$row = $result->fetch_array(MYSQLI_ASSOC);
+										$row = $result2->fetch_array(MYSQLI_ASSOC);
 										do {
 											echo $row['name_author'];
 
-											if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+											if ($row = $result2->fetch_array(MYSQLI_ASSOC)) {
 												echo ", ";
 											} else {
 												break;

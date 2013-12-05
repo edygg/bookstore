@@ -91,7 +91,7 @@
 							 	<td><?php echo $row['name_author']; ?></td>
 							 	<td><?php echo $row['nationality']; ?></td>
 							 	<td>
-							 		<button class="btn btn-primary"><a href="">Actualizar</a></button>
+							 		<button class="btn btn-primary"><a href=<?php echo '"UpdateAuthor.php?id='.$row['id_author'].'"'; ?>>Actualizar</a></button>
 							 		<button class="btn btn-danger"><a href=<?php echo '"ManageAuthors.php?id='.$row['id_author'].'"'; ?>>Eliminar</a></button>
 							 	</td>
 							 </tr>
